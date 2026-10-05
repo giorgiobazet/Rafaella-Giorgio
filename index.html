@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5 Meses - Giorgio & Rafaella</title>
+    
+    <!-- Fontes do Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #ff4d6d;
+            --bg-color: #fff0f3;
+            --text-color: #590d22;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            /* Fundo gradiente animado */
+            background: linear-gradient(-45deg, #fff0f3, #ffe5ec, #ffc2d1, #ffb3c6);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: var(--text-color);
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Fundo com corações flutuantes base */
+        .heart {
+            position: absolute;
+            color: var(--primary-color);
+            opacity: 0.6;
+            animation: floatUp 10s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) scale(0.5); opacity: 0; }
+            20% { opacity: 0.6; }
+            100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
+        }
+
+        /* Cabeçalho */
+        header {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4.5rem;
+            color: var(--primary-color);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            animation: fadeInDown 1.5s ease-out;
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        p.subtitle {
+            font-size: 1.3rem;
+            margin-top: 10px;
+            min-height: 30px; /* Evita pulo na tela durante a digitação */
+            font-weight: 400;
+        }
+
+        /* Player de Música */
+        .music-section {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px 40px;
+            border-radius: 30px;
+            box-shadow: 0 10px 20px rgba(255, 77, 109, 0.2);
+            margin: 30px 0;
+            text-align: center;
+            backdrop-filter: blur(5px);
+            animation: fadeIn 2s ease-in;
+        }
+        
+        .music-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .music-title span {
+            display: inline-block;
+            animation: pulseBeat 1.5s infinite;
+        }
+
+        @keyframes pulseBeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+            100% { transform: scale(1); }
+        }
+
+        /* Galeria Estilo Polaroid */
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            padding: 20px;
+            max-width: 1200px;
+        }
+
+        .polaroid {
+            background: white;
+            padding: 15px 15px 50px 15px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            border-radius: 5px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            cursor: pointer;
+        }
+
+        .polaroid:hover {
+            transform: scale(1.1) rotate(0deg) translateY(-10px) !important;
+            box-shadow: 0 25px 50px rgba(255, 77, 109, 0.4);
+            z-index: 10;
+        }
+
+        .polaroid img {
+            width: 250px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 3px;
+            transition: filter 0.3s;
+        }
+
+        .polaroid:hover img {
+            filter: brightness(1.05);
+        }
+
+        .polaroid::after {
+            content: "Nós ❤️";
+            position: absolute;
+            bottom: 15px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.6rem;
+            color: #333;
+        }
+
+        .polaroid:nth-child(1) { transform: rotate(-5deg); }
+        .polaroid:nth-child(2) { transform: rotate(3deg); }
+        .polaroid:nth-child(3) { transform: rotate(-2deg); }
+        .polaroid:nth-child(4) { transform: rotate(4deg); }
+        .polaroid:nth-child(5) { transform: rotate(-4deg); }
+
+        /* Botão da Carta */
+        .letter-btn {
+            background: linear-gradient(135deg, var(--primary-color), #c9184a);
+            color: white;
+            border: none;
+            padding: 18px 45px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 50px 0;
+            box-shadow: 0 10px 25px rgba(255, 77, 109, 0.5);
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            animation: floatBtn 3s ease-in-out infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @keyframes floatBtn {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .letter-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 35px rgba(255, 77, 109, 0.7);
+        }
+
+        /* Efeito de brilho passando no botão */
+        .letter-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: all 0.5s;
+        }
+        .letter-btn:hover::before {
+            left: 100%;
+        }
+
+        /* Modal da Carta */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(8px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.5s ease;
+            z-index: 100;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .letter-container {
+            background-image: url('https://www.transparenttextures.com/patterns/old-paper.png');
+            background-color: #fdf5e6;
+            padding: 50px;
+            border-radius: 15px;
+            max-width: 750px;
+            width: 90%;
+            max-height: 85vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+            position: relative;
+            transform: translateY(100px) scale(0.8) rotateX(-20deg);
+            transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            opacity: 0;
+        }
+
+        .modal-overlay.active .letter-container {
+            transform: translateY(0) scale(1) rotateX(0deg);
+            opacity: 1;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 2.5rem;
+            color: #8b5a2b;
+            cursor: pointer;
+            background: none;
+            border: none;
+            transition: transform 0.3s;
+        }
+
+        .close-btn:hover {
+            transform: rotate(90deg) scale(1.2);
+            color: var(--primary-color);
+        }
+
+        .letter-content {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.7rem;
+            line-height: 1.8;
+            color: #3e2723;
+        }
+
+        .letter-content p {
+            margin-bottom: 20px;
+            text-indent: 40px;
+        }
+
+        .signature {
+            text-align: right;
+            margin-top: 40px;
+            font-weight: 700;
+            font-size: 1.8rem;
+        }
+
+        /* Scrollbar estilizada */
+        .letter-container::-webkit-scrollbar { width: 10px; }
+        .letter-container::-webkit-scrollbar-thumb { background: #d4a373; border-radius: 5px; }
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: var(--bg-color); }
+        ::-webkit-scrollbar-thumb { background: var(--primary-color); border-radius: 5px; }
+
+        /* Animação do coração ao clicar */
+        .click-heart {
+            position: fixed;
+            pointer-events: none;
+            font-size: 24px;
+            animation: popUpFade 1s ease-out forwards;
+            z-index: 9999;
+        }
+
+        @keyframes popUpFade {
+            0% { transform: translateY(0) scale(0.5); opacity: 1; }
+            50% { transform: translateY(-30px) scale(1.2); opacity: 1; }
+            100% { transform: translateY(-60px) scale(1); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Fundo de Corações gerado via JS -->
+    <div id="hearts-container"></div>
+
+    <header>
+        <h1>Feliz 5 Meses, Rafaella!</h1>
+        <p class="subtitle" id="typewriter-text"></p>
+    </header>
+
+    <!-- Seção de Música -->
+    <section class="music-section">
+        <div class="music-title">
+            <span>🎵</span> Nossa Música: Preciso Dizer Que Eu Te Amo <span>❤️</span>
+        </div>
+        <audio controls loop>
+            <source src="assets/audio/musica.mp3" type="audio/mpeg">
+            Seu navegador não suporta o elemento de áudio.
+        </audio>
+    </section>
+
+    <!-- Galeria de Fotos -->
+    <section class="gallery">
+        <div class="polaroid"><img src="assets/img/foto1.jpg" alt="Foto Nossa 1"></div>
+        <div class="polaroid"><img src="assets/img/foto2.jpg" alt="Foto Nossa 2"></div>
+        <div class="polaroid"><img src="assets/img/foto3.jpg" alt="Foto Nossa 3"></div>
+        <div class="polaroid"><img src="assets/img/foto4.jpg" alt="Foto Nossa 4"></div>
+        <div class="polaroid"><img src="assets/img/foto5.jpg" alt="Foto Nossa 5"></div>
+    </section>
+
+    <!-- Botão para abrir a carta -->
+    <button class="letter-btn" onclick="openLetter(event)">
+        ✉️ Abrir Carta Especial
+    </button>
+
+    <!-- Modal da Carta -->
+    <div class="modal-overlay" id="letterModal" onclick="closeLetterOutside(event)">
+        <div class="letter-container">
+            <button class="close-btn" onclick="closeLetter()">×</button>
+            <div class="letter-content">
+                <p>Querida Rafaella,</p>
+                <p>Não sei se sou um bom namorado, claramente não sou o que você merece, pois você merece o melhor que a vida tem pra oferecer, e eu mesmo não sendo o melhor homem do mundo, tento ser o melhor homem pra você, para podermos ter um futuro juntos, construir uma família e ser felizes. Meu maior medo é não conseguir sempre transparecer o quanto eu te amo, e o quanto eu sou grato por ter você na minha vida.</p>
+                <p>Desde que eu te conheci voltei a ser o Giorgio que eu nasci pra ser, voltei a ver a vida de uma forma mais bonita, tive vontade de viver, e poder viver ao seu lado é o que me move diariamente para tentar o melhor de mim. Eu te amo, e nesses 5 meses que se passaram, eu posso dizer que eu tenho sorte. Sorte por ter a oportunidade de conhecer uma pessoa tão pura, inteligente e amorosa que é você, isso porque falo somente sobre conhecer, imagina o quanto eu sou grato por poder viver ao lado de alguém como você?</p>
+                <p>O jeito que eu me sinto por ter você ao meu lado, é o sentimento de estar seguro, me sinto seguro ao lado, seguro por ter alguém que eu realmente entendi que é o amor. Eu achava que a maior prova de amor seria morrer por alguém, eu desde que senti seu amor por mim já não acho que essa seja a verdadeira maior prova de amor, a maior prova de amor que é VIVER por alguém, viver com você, para você, por você.</p>
+                <p>Meu maior medo desde novo sempre foi morrer, esse medo me consome há anos, a ideia de acabar tudo e não ter certeza do que vem, um dia desses minha mãe compartilhou esse mesmo medo comigo, e eu cheguei que o medo nunca foi sobre morrer, sempre foi sobre estar sozinho, perder o seu porto seguro. Nessa conversa nada alta astral, eu percebi que você se tornou essa pessoa pra mim, alguém que eu não quero nunca perder, nunca deixar de viver o máximo ao seu lado, aproveitar cada momento da nossas vidas juntos, até que o meu último suspiro seja do seu lado, quero ter a oportunidade e a honra de passar uma vida ao seu lado e o último momento dela com você.</p>
+                <p>Em meio esse papo deprê, a mensagem que eu quero deixar sobre tudo isso é, eu te amo muito, o tanto que eu não consiga falar e medo de não demonstrar. E, que eu quero viver ao seu lado e ser o melhor homem pra que você sempre se sinta amada, segura e confortável, pois é assim que me sinto tendo você em minha vida. Eu sou seu, </p>
+                <p>quero ser eternamente seu, e quero viver uma vida com o melhor do que temos pra viver, visitar países, nos conhecer cada vez mais, nunca deixar de rir ao seu lado, ser sempre leve, te amar e estar com você nunca por comodidade, mas por esse sentimento inefável que eu tenho por você e por tudo que temos pra construir JUNTOS, que ninguém fale o que devemos ou não fazer, sentir e viver. Porque só nós sabemos o que sentimos um pelo outro. Mais uma vez, caso não tenha entendido, eu te amo. Feliz 5 meses, obrigado por esses tão felizes meses ao seu lados, que vire anos, décadas e que se inventarem a vida eterna por meio de robôs, eu amaria passar a eternidade com a Rafaellatron. Eu te amo, ma luv.</p>
+                <div class="signature">
+                    - Com amor,<br>
+                    Giorgio Bazet. 
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Efeito de digitação (Typewriter)
+        const textToType = "Cada dia ao seu lado é um presente.";
+        let i = 0;
+        function typeWriter() {
+            if (i < textToType.length) {
+                document.getElementById("typewriter-text").innerHTML += textToType.charAt(i);
+                i++;
+                setTimeout(typeWriter, 100);
+            }
+        }
+
+        // Função para abrir a carta com explosão de corações
+        function openLetter(event) {
+            document.getElementById('letterModal').classList.add('active');
+            
+            // Cria uma pequena explosão de corações ao redor do botão
+            for(let j = 0; j < 8; j++) {
+                setTimeout(() => createClickHeart(event.clientX, event.clientY), j * 50);
+            }
+        }
+
+        // Função para fechar a carta
+        function closeLetter() {
+            document.getElementById('letterModal').classList.remove('active');
+        }
+
+        // Fechar clicando fora da carta
+        function closeLetterOutside(event) {
+            if (event.target.id === 'letterModal') {
+                closeLetter();
+            }
+        }
+
+        // Gerador de corações flutuantes de fundo
+        function createHearts() {
+            const container = document.getElementById('hearts-container');
+            const heartSymbols = ['❤️', '💖', '💕', '💗'];
+            
+            for(let i = 0; i < 30; i++) {
+                let heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.innerText = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+                
+                let leftPos = Math.random() * 100;
+                let animDuration = 10 + Math.random() * 15;
+                let delay = Math.random() * 10;
+                let fontSize = 10 + Math.random() * 20;
+
+                heart.style.left = leftPos + 'vw';
+                heart.style.animationDuration = animDuration + 's';
+                heart.style.animationDelay = delay + 's';
+                heart.style.fontSize = fontSize + 'px';
+
+                container.appendChild(heart);
+            }
+        }
+
+        // Função para criar coração ao clicar na tela
+        function createClickHeart(x, y) {
+            const heart = document.createElement('div');
+            heart.className = 'click-heart';
+            const heartSymbols = ['💖', '💕', '✨', '💝'];
+            heart.innerText = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+            
+            // Deslocamento aleatório para a explosão parecer natural
+            const offsetX = (Math.random() - 0.5) * 40;
+            
+            heart.style.left = (x + offsetX - 12) + 'px'; // -12 para centralizar baseado no font-size
+            heart.style.top = (y - 12) + 'px';
+            
+            document.body.appendChild(heart);
+
+            // Remove o elemento após a animação (1 segundo)
+            setTimeout(() => {
+                heart.remove();
+            }, 1000);
+        }
+
+        // Adiciona evento de clique na tela inteira
+        document.addEventListener('click', function(e) {
+            // Evita criar corações se clicar dentro da carta, no player de áudio ou no botão (que já tem seu efeito)
+            if(e.target.closest('.letter-container') || e.target.closest('audio') || e.target.closest('.letter-btn')) {
+                return;
+            }
+            createClickHeart(e.clientX, e.clientY);
+        });
+
+        // Inicia funções ao carregar a página
+        window.onload = () => {
+            createHearts();
+            setTimeout(typeWriter, 500); // Começa a digitar meio segundo após abrir
+        };
+    </script>
+</body>
+</html>
